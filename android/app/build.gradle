@@ -4,10 +4,6 @@ plugins {
     id "dev.flutter.flutter-gradle-plugin"
 }
 
-classpath 'com.google.gms:google-services:4.3.3' // Check for the latest version
-apply plugin: 'com.google.gms.google-services'
-
-
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
@@ -49,7 +45,8 @@ android {
         applicationId "com.example.parkfinder"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion flutter.minSdkVersion
+        //minSdkVersion flutter.minSdkVersion
+        minSdkVersion 20
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
