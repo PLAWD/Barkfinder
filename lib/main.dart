@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:parkfinder/register.dart';
-import 'package:parkfinder/map.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:parkfinder/landing.dart';
+
+
 
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -48,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // Logo (from PNG)
-                Image.asset('assets/logo.png'),
+                Image.asset('assests/logo.png'),
                 SizedBox(height: 30),
                 Form(
                   key: _formKey,
@@ -131,8 +131,9 @@ class _LoginScreenState extends State<LoginScreen> {
       bool isValid = await isValidLogin(_username, _password);
       if (isValid) {
         // Navigate to next screen or show a success message
-        ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Successfully Logged In!'))
+        Navigator.pushReplacement(
+          context,
+            MaterialPageRoute(builder: (context) => NearbyPlacesSubpage())
         );
       } else {
         // Show error message
@@ -145,7 +146,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _onForgotPasswordPressed() {
     Navigator.push(
-         context, MaterialPageRoute(builder: (context) => mapPage(title: 'Map',)));
+         context, MaterialPageRoute(builder: (context) => NearbyPlacesSubpage()));
   }
 
   void _onSignUpPressed() {
